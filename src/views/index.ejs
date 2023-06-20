@@ -1,0 +1,44 @@
+<%- include('includes/head'); %>
+<%- include('includes/navBar')%>
+ <!-- === area body === -->
+
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Agenda on-line</h1>
+      <p class="text-center lead">
+         Logue para utilizar Sua agenda on-line
+      </p>
+
+      <%- include('includes/messeges')%>
+      
+      <table class="table my-table 3">
+     <% if(contatos.length > 0) { %>
+      <div class="responsive-table">
+        <% contatos.forEach(contato => { %>
+
+          <tr>
+            <td><%= contato.nome%></td>
+            <td><%= contato.sobrenome%></td>
+            <td><%= contato.email%></td>
+            <td><%= contato.telefone%></td>
+            <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
+            <td><a class="text-danger" href="/contato/delete/<%= contato._id %>"> Excluir </a> </td>
+          </tr>   
+          <% }); %>     
+        </table>
+      </div>
+      <% }else { %>
+        <p class="text-center lead"> Não existem contatos na sua agenda </p><br>
+        <% } %>
+    </div>
+
+    <div class="col-lg-2"></div>
+
+  </div>
+ </div>
+
+
+<%- include('includes/footer'); %>
